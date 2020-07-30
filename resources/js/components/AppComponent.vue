@@ -3,10 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Fizz Buzz Listing</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <b-list-group>
+                            <b-list-group-item v-for="fizzBuzz in fizzBuzzData" :key="fizzBuzz.id"  >{{fizzBuzz.value}}</b-list-group-item>
+                        </b-list-group>
                     </div>
                 </div>
             </div>
@@ -16,14 +18,23 @@
 
 <script>
 
+    import Vue from 'vue';
     import axios from 'axios';
+    import { BootstrapVue } from 'bootstrap-vue'
+    Vue.use(BootstrapVue);
 
     export default {
-        mounted() {
+        data(){
+            return {
+                fizzBuzzData:[]
+            }
+        },
+        created() {
+            let that = this;
             axios.get('/fizzbuzz')
                 .then(function (response) {
                     // handle success
-                    console.log(response);
+                    that.fizzBuzzData = response.data;
                 })
                 .catch(function (error) {
                     // handle error

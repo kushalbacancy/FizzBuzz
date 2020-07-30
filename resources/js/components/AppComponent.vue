@@ -15,9 +15,23 @@
 </template>
 
 <script>
+
+    import axios from 'axios';
+
     export default {
         mounted() {
-            console.log('Component mounted.')
+            axios.get('/fizzbuzz')
+                .then(function (response) {
+                    // handle success
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                });
         }
     }
 </script>

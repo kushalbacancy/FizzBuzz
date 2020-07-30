@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::resource('fizzbuzz', 'FizzBuzzController')->only([
-    'index', 'show'
-]);
+Route::prefix('v1')->group(function(){
+    Route::resource('fizzbuzz', 'FizzBuzzController')->only([
+        'index', 'show'
+    ]);
+});

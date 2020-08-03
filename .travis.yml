@@ -7,4 +7,4 @@ before_scripts:
   - travis_retry composer install --prefer-source --no-interaction --dev
   - cp .env.travis .env
 
-script: phpunit
+script: ./vendor/bin/phpunit
